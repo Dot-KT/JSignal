@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: SignalApi
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/signaldb}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:psql}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: ${PORT:8080}
