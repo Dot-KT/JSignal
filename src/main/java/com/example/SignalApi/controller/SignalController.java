@@ -19,6 +19,12 @@ public class SignalController {
 
     private final SignalService signalService;
 
+    @GetMapping("/")
+    public ResponseEntity<String> root() {
+        return ResponseEntity.ok("Signal API is running");
+    }
+
+
     @PostMapping
     public ResponseEntity<SignalResponseDto> createSignal(@RequestBody SignalRequestDto request) {
         SignalResponseDto response = signalService.createSignal(request);
