@@ -4,3 +4,4 @@ set DATABASE_PASSWORD=iATxL4IZTDkMl2Su8Vjx4iSjVK6fMfWM
 set JWT_SECRET=my-super-secret-key-that-is-at-least-256-bits-long-for-hs256
 
 mvn spring-boot:run
+bash seed-signals.sh

@@ -3,7 +3,14 @@
     "allow": [
       "Bash(./mvnw compile:*)",
       "Bash(./mvnw test:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(export DATABASE_URL=jdbc:postgresql://dpg-d81p77cvikkc739ao4sg-a.virginia-postgres.render.com:5432/signaldb_061m)",
+      "Bash(export DATABASE_USERNAME=signaldb_061m_user)",
+      "Bash(export DATABASE_PASSWORD=iATxL4IZTDkMl2Su8Vjx4iSjVK6fMfWM)",
+      "Bash(export JWT_SECRET=my-super-secret-key-that-is-at-least-256-bits-long-for-hs256)",
+      "Bash(./mvnw spring-boot:run)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/api/v1/signals/)",
+      "Bash(bash seed-signals.sh)"
     ]
   }
 }
