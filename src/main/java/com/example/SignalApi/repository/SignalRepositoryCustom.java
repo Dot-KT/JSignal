@@ -8,4 +8,6 @@ import java.util.List;
 public interface SignalRepositoryCustom {
 
     List<Signal> findWithFilters(SignalFilterDto filter);
+
+    long countWithFilters(SignalFilterDto filter);
 }

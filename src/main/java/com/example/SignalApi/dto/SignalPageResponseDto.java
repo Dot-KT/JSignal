@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class SignalPageResponseDto {
 
+    private long totalCount;
     private List<SignalResponseDto> data;
     private String nextCursorId;
     private Instant nextCursorAt;

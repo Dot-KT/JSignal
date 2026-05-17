@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +20,17 @@ public class SignalFilterDto {
     private String communityId;
     private Boolean activeOnly;
     private String search;
+
+    // Dedicated filters for accurate matching
+    private String reference;
+    private String category;
+    private List<String> tags;
+    private Integer priority;
+
+    // Similarity filters
+    private Boolean hasBoloMatch;
+    private Boolean hasSimilarSignals;
+    private Boolean hasPossibleDuplicates;
 
     // Cursor-based pagination
     private Instant cursorAt;

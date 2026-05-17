@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: SignalApi
+
+  datasource:
+    url: jdbc:postgresql://dpg-d81p77cvikkc739ao4sg-a.virginia-postgres.render.com:5432/signaldb_061m
+    username: signaldb_061m_user
+    password: iATxL4IZTDkMl2Su8Vjx4iSjVK6fMfWM
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret: my-super-secret-key-that-is-at-least-256-bits-long-for-hs256
+  expiration: 86400000
+
+server:
+  port: 8080

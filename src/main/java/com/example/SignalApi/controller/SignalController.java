@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/signals")
@@ -19,7 +20,7 @@ public class SignalController {
 
     private final SignalService signalService;
 
-    @GetMapping("/")
+    @GetMapping("tests")
     public ResponseEntity<String> root() {
         return ResponseEntity.ok("Signal API is running");
     }
@@ -38,14 +39,21 @@ public class SignalController {
 
     @GetMapping
     public ResponseEntity<SignalPageResponseDto> searchSignals(
-            @RequestParam(name = "StartDate", required = false) Instant startDate,
-            @RequestParam(name = "EndDate", required = false) Instant endDate,
+            @RequestParam(required = false) Instant startDate,
+            @RequestParam(required = false) Instant endDate,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) Boolean hasPhotoAttached,
             @RequestParam(required = false) String communityId,
             @RequestParam(required = false) Boolean activeOnly,
             @RequestParam(required = false) String search,
+            @RequestParam(required = false) String reference,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) List<String> tags,
+            @RequestParam(required = false) Integer priority,
+            @RequestParam(required = false) Boolean hasBoloMatch,
+            @RequestParam(required = false) Boolean hasSimilarSignals,
+            @RequestParam(required = false) Boolean hasPossibleDuplicates,
             @RequestParam(required = false) Instant cursorAt,
             @RequestParam(required = false) String cursorId,
             @RequestParam(defaultValue = "20") int limit) {
@@ -59,6 +67,13 @@ public class SignalController {
         filter.setCommunityId(communityId);
         filter.setActiveOnly(activeOnly);
         filter.setSearch(search);
+        filter.setReference(reference);
+        filter.setCategory(category);
+        filter.setTags(tags);
+        filter.setPriority(priority);
+        filter.setHasBoloMatch(hasBoloMatch);
+        filter.setHasSimilarSignals(hasSimilarSignals);
+        filter.setHasPossibleDuplicates(hasPossibleDuplicates);
         filter.setCursorAt(cursorAt);
         filter.setCursorId(cursorId);
         filter.setLimit(limit);

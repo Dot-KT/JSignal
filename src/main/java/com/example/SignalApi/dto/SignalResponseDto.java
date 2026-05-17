@@ -51,4 +51,9 @@ public class SignalResponseDto {
     private Instant submissionTime;
     private Instant createdAt;
     private Instant deactivatedAt;
+
+    // Similarity enrichment fields
+    private Boolean possibleBoloMatch;
+    private Long similarSignalCount;
+    private Long possibleDuplicateCount;
 }
