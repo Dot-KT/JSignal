@@ -32,6 +32,9 @@ public class SignalFilterDto {
     private Boolean hasSimilarSignals;
     private Boolean hasPossibleDuplicates;
 
+    // Bounding box filter (map viewport)
+    private BoundingBoxDto boundingBox;
+
     // Cursor-based pagination
     private Instant cursorAt;
     private String cursorId;

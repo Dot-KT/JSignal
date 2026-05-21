@@ -1,5 +1,6 @@
 package com.example.SignalApi.controller;
 
+import com.example.SignalApi.dto.BoundingBoxDto;
 import com.example.SignalApi.dto.SignalFilterDto;
 import com.example.SignalApi.dto.SignalPageResponseDto;
 import com.example.SignalApi.dto.SignalRequestDto;
@@ -54,6 +55,10 @@ public class SignalController {
             @RequestParam(required = false) Boolean hasBoloMatch,
             @RequestParam(required = false) Boolean hasSimilarSignals,
             @RequestParam(required = false) Boolean hasPossibleDuplicates,
+            @RequestParam(required = false) Double south,
+            @RequestParam(required = false) Double north,
+            @RequestParam(required = false) Double west,
+            @RequestParam(required = false) Double east,
             @RequestParam(required = false) Instant cursorAt,
             @RequestParam(required = false) String cursorId,
             @RequestParam(defaultValue = "20") int limit) {
@@ -74,6 +79,7 @@ public class SignalController {
         filter.setHasBoloMatch(hasBoloMatch);
         filter.setHasSimilarSignals(hasSimilarSignals);
         filter.setHasPossibleDuplicates(hasPossibleDuplicates);
+        filter.setBoundingBox(new BoundingBoxDto(south, north, west, east));
         filter.setCursorAt(cursorAt);
         filter.setCursorId(cursorId);
         filter.setLimit(limit);

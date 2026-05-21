@@ -116,6 +116,13 @@ public class SignalRepositoryCustomImpl implements SignalRepositoryCustom {
             predicates.add(cb.isNotNull(root.get("primaryBoloId")));
         }
 
+        // Bounding box filter: latitude BETWEEN south AND north, longitude BETWEEN west AND east
+        if (filter.getBoundingBox() != null && filter.getBoundingBox().isComplete()) {
+            var box = filter.getBoundingBox();
+            predicates.add(cb.between(root.get("latitude"), box.getSouth(), box.getNorth()));
+            predicates.add(cb.between(root.get("longitude"), box.getWest(), box.getEast()));
+        }
+
         // Full-text search: each word must appear in at least one text field (AND between words)
         if (filter.getSearch() != null && !filter.getSearch().isBlank()) {
             String[] words = filter.getSearch().trim().toLowerCase().split("\\s+");
